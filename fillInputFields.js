@@ -50,4 +50,7 @@ function fillInputFields(formName, hasDatepicker) {
 
 }
 
-fillInputFields("frmForm", "hasDatepicker")
+// Note: This will not affect those fields that are readonly, disabled, date fields with class="hasDatepicker"
+
+// Uncomment the next line to run the function
+// fillInputFields("frmForm", "hasDatepicker")
