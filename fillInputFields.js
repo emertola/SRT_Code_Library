@@ -50,5 +50,5 @@ function fillInputFields(formName, hasDatepicker) {
 
 // Note: This will not affect those fields that are readonly, disabled, date fields with class="hasDatepicker"
 
-// Uncomment the next line to run the function
+// Uncomment the next line to run the function in your browser console
 // fillInputFields("frmForm", "hasDatepicker")
