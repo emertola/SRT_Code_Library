@@ -5,8 +5,6 @@ function fillInputFields(formName, hasDatepicker) {
 	const elems = frmForm[0].elements
 	let valCounter = 1;
 
-	console.log(elems)
-
 	for(var i = 0; i < elems.length; i++) {
 		const elemType = elems[i].type.toLowerCase();
 		const elemReadOnly = elems[i].readOnly ? true : false;
