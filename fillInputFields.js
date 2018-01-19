@@ -45,10 +45,26 @@ function fillInputFields(formName, hasDatepicker) {
 			}
 		}
 	}
+	return true;
 
 }
 
-// Note: This will not affect those fields that are readonly, disabled, date fields with class="hasDatepicker"
+// function enterMagicWord() {
+// 	var runFunc = prompt("Please enter the magic word: ");
+// 	var magicWord = runFunc.toLowerCase();
 
-// Uncomment the next line to run the function in your browser console
-// fillInputFields("frmForm", "hasDatepicker")
+// 	if(magicWord === "magic") {
+// 		fillInputFields("frmForm", "hasDatepicker")
+// 	} else {
+// 		if(confirm("Invalid magic word! Please try again.") === true) {
+// 			enterMagicWord()
+// 		}
+// 	}
+// }
+
+// enterMagicWord()
+
+// Please enter "magic" when the input box appear
+
+
+fillInputFields("frmForm", "hasDatepicker")
