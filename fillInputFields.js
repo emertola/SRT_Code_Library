@@ -9,20 +9,21 @@ function fillInputFields(formName, hasDatepicker) {
 		const elemType = elems[i].type.toLowerCase();
 		const elemReadOnly = elems[i].readOnly ? true : false;
 		const elemDisabled = elems[i].disabled ? true : false;
+		const elemNoValue = elems[i].value ? true : false;
 		const getDateElem = elems[i].className.split(" ").filter((dateClass) => {return dateClass === hasDatepicker});
 		const checkIfDate = getDateElem.length > 0 ? true : false;
 
 		switch(elemType) {
 			case "text":
 			case "textarea": {
-				if(!elemDisabled && !elemReadOnly && elems[i].value === "" && !checkIfDate && elems[i].id !== "signature") {
+				if(!elemDisabled && !elemReadOnly && !elemNoValue && !checkIfDate && elems[i].id !== "signature") {
 					elems[i].value = "fd" + valCounter;
 					valCounter += 1;
 				}
 			}
 
 			case "select-one": {
-				if(!elemDisabled && !elemReadOnly && elems[i].value === "") {
+				if(!elemDisabled && !elemReadOnly && !elemNoValue) {
 					const selIndex = elems[i].selectedIndex + 1;
 			        elems[i].selectedIndex = selIndex;
 				}
