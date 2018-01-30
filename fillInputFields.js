@@ -12,11 +12,12 @@ function fillInputFields(formName, hasDatepicker) {
 		const elemNoValue = elems[i].value ? true : false;
 		const getDateElem = elems[i].className.split(" ").filter((dateClass) => {return dateClass === hasDatepicker});
 		const checkIfDate = getDateElem.length > 0 ? true : false;
+		const isVisible = elems[i].offsetHeight > 0 ? true : false;
 
 		switch(elemType) {
 			case "text":
 			case "textarea": {
-				if(!elemDisabled && !elemReadOnly && !elemNoValue && !checkIfDate && elems[i].id !== "signature") {
+				if(!elemDisabled && !elemReadOnly && !elemNoValue && !checkIfDate && elems[i].id !== "signature" && isVisible) {
 					elems[i].value = "fd" + valCounter;
 					valCounter += 1;
 				}
@@ -42,7 +43,7 @@ function fillInputFields(formName, hasDatepicker) {
 			}
 
 			default: {
-				// console.log("hello")
+				// default handler
 			}
 		}
 	}

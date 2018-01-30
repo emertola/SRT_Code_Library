@@ -1,6 +1,6 @@
 
 var parentElement = document.getElementsByTagName("body")[0];
-var childElement = document.getElementsByTagName("dynamic-fill-button");
+var childElement = document.getElementsByTagName("dynamic-remove-button");
 
 
 if(childElement && childElement.length > 0) {
@@ -13,16 +13,16 @@ if(childElement && childElement.length > 0) {
 
 function fillInputfieldsByButtonClick() {
 
-	var newElem = document.createElement("dynamic-fill-button");
-	var elemText = document.createTextNode("Click to run the function");
+	var newElem = document.createElement("dynamic-remove-button");
+	var elemText = document.createTextNode("Remove Field Values");
 	newElem.appendChild(elemText);
 	var bodyTag = document.getElementsByTagName("body")[0];
 	bodyTag.insertBefore(newElem, bodyTag.childNodes[0])
 
 
-	var getNewElem = document.getElementsByTagName("dynamic-fill-button")[0];
-	getNewElem.setAttribute("onClick", "fillFunc()");
-	getNewElem.setAttribute("style", "background-color: teal; color: white; padding: 5px; margin-top: 10px; cursor: pointer; position: relative; top: 10px; left: 10px; z-index: 9999;")
+	var getNewElem = document.getElementsByTagName("dynamic-remove-button")[0];
+	getNewElem.setAttribute("onClick", "removeFunc()");
+	getNewElem.setAttribute("style", "background-color: #ef5350; color: white; padding: 5px; margin-top: 10px; cursor: pointer; position: relative; top: 10px; left: 10px; z-index: 9999;")
 
 	return true;
 
@@ -30,11 +30,11 @@ function fillInputfieldsByButtonClick() {
 }
 
 
-function fillFunc() {
+function removeFunc() {
 	var pageID = prompt('Please enter the page ID')
 
 	if(pageID) {
-		
+
 		var stage = document.getElementById("stage" + pageID).querySelectorAll("input, select, textarea")
 
 		let counter = 1;
@@ -46,34 +46,35 @@ function fillFunc() {
 			switch(stage[i].type) {
 				case "text":
 				case "textarea": {
-					if(!elemDisabled(stage[i]) && !elemReadonly(stage[i]) && stage[i].value === "") {
-						stage[i].value = "fd" + counter;
-						counter += 1;
+					if(!elemDisabled(stage[i]) && !elemReadonly(stage[i]) && stage[i].value.length > 0) {
+						stage[i].value = ""
 					}
 				}
 
 				case "radio": {
 					var rdName = document.getElementsByName(stage[i].name);
-					rdName[0].checked = true;
+					for(var j = 0; j < rdName.length; j++) {
+						if(!elemDisabled(stage[i])) {
+							rdName[j].checked = false;
+						}
+					}
 				}
 
 				case "checkbox" : {
-					if(!elemDisabled(stage[i]) && !elemReadonly(stage[i])) {
-						stage[i].checked = true;
+					if(!elemDisabled(stage[i])) {
+						stage[i].checked = false;
 					}
 				}
 
 				case "select-one":
 				case "select-multiple": {
-					if(!elemDisabled(stage[i]) && !elemReadonly(stage[i]) && stage[i].value === "") {
-						const selIndex = stage[i].selectedIndex + 1;
-						stage[i].selectedIndex = selIndex;
+					if(!elemDisabled(stage[i]) && !elemReadonly(stage[i])) {
+						stage[i].selectedIndex = -1;
 					}
 				}
 			}
 		}
-
-	} 
+	}
 	
 
 }
