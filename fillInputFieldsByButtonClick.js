@@ -26,7 +26,7 @@ function fillInputfieldsByButtonClick() {
 
 	var getNewElem = document.getElementsByTagName("dynamic-fill-button")[0];
 	getNewElem.setAttribute("onClick", "fillFunc('ResumeForm')");
-	getNewElem.setAttribute("style", "background-color: teal; color: white; padding: 5px; margin-top: 10px; cursor: pointer; position: relative; top: 10px; left: 10px; z-index: 9999;")
+	getNewElem.setAttribute("style", "position: fixed; background-color: teal; color: white; padding: 5px; margin-top: 10px; cursor: pointer; top: 10px; left: 155px; z-index: 9999;")
 
 	return true;
 
@@ -96,7 +96,7 @@ function removeInputfieldsByButtonClick() {
 
 	var getNewElem = document.getElementsByTagName("dynamic-remove-button")[0];
 	getNewElem.setAttribute("onClick", "removeFunc('ResumeForm')");
-	getNewElem.setAttribute("style", "background-color: #ef5350; color: white; padding: 5px; margin-top: 10px; cursor: pointer; position: relative; top: 10px; left: 10px; z-index: 9999;")
+	getNewElem.setAttribute("style", "position: fixed; background-color: #ef5350; color: white; padding: 5px; margin-top: 10px; cursor: pointer; top: 10px; left: 10px; z-index: 9999;")
 
 	return true;
 
