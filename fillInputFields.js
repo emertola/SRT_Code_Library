@@ -15,12 +15,20 @@ function fillInputFields(formName, hasDatepicker) {
 		const isVisible = elems[i].offsetHeight > 0 ? true : false;
 
 		switch(elemType) {
-			case "text":
-			case "textarea": {
-				if(!elemDisabled && !elemReadOnly && !elemNoValue && !checkIfDate && elems[i].id !== "signature" && isVisible) {
+			case "text": {
+				if(!elemDisabled && !elemReadOnly && !elemNoValue && elems[i].id !== "signature" && isVisible) {
 					elems[i].value = "fd" + valCounter;
 					valCounter += 1;
 				}
+				break;
+			}
+
+			case "textarea": {
+				if(!elemDisabled && !elemReadOnly && !elemNoValue && elems[i].id !== "signature" && isVisible) {
+					elems[i].value = "fd" + valCounter + "\r\ntest newline";
+					valCounter += 1;
+				}
+				break;
 			}
 
 			case "select-one": {
@@ -28,18 +36,21 @@ function fillInputFields(formName, hasDatepicker) {
 					const selIndex = elems[i].selectedIndex + 1;
 			        elems[i].selectedIndex = selIndex;
 				}
+				break;
 			}
 
 			case "checkbox": {
 				if(!elemDisabled && !elems[i].checked) {
 					elems[i].checked = true;
 				}
+				break;
 			}
 
 			case "radio": {
 				if(!elemDisabled && !elemReadOnly) {
 					elems[i].checked = true;
 				}
+				break;
 			}
 
 			default: {
@@ -50,23 +61,6 @@ function fillInputFields(formName, hasDatepicker) {
 	return true;
 
 }
-
-// function enterMagicWord() {
-// 	var runFunc = prompt("Please enter the magic word: ");
-// 	var magicWord = runFunc.toLowerCase();
-
-// 	if(magicWord === "magic") {
-// 		fillInputFields("frmForm", "hasDatepicker")
-// 	} else {
-// 		if(confirm("Invalid magic word! Please try again.") === true) {
-// 			enterMagicWord()
-// 		}
-// 	}
-// }
-
-// enterMagicWord()
-
-// Please enter "magic" when the input box appear
 
 
 fillInputFields("frmForm", "hasDatepicker")
