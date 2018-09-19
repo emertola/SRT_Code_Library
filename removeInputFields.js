@@ -9,23 +9,43 @@ function removeInputFields(formName, hasDatepicker) {
 
 	for(var i = 0; i < elems.length; i++) {
 		const elemType = elems[i].type.toLowerCase();
+		const isVisible = elems[i].offsetHeight > 0 ? true : false;
 
 		switch(elemType) {
 			case "text":
 			case "textarea": {
-				elems[i].value = ""
+				if(isVisible) {
+					elems[i].value = "";
+				}
+				
+				break;
 			}
 
 			case "select-one": {
-		        elems[i].selectedIndex = -1;
+				if(isVisible) {
+					elems[i].selectedIndex = "";
+				}
+		        
+		        break;
 		    }
 
 			case "checkbox": {
-				elems[i].checked = false;
+				if(isVisible) {
+					elems[i].checked = false;
+				}
+				
+				break;
 			}
 
 			case "radio": {
-				elems[i].checked = false;
+				if(isVisible) {
+					var rdName = document.getElementsByName(elems[i].name);
+					for(var j = 0; j < rdName.length; j++) {
+						rdName[j].checked = false;
+					}
+				}
+				
+				break;
 			}
 
 			default: {
